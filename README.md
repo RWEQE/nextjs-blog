@@ -1,2 +1,2 @@
 # nextjs-blog
-next.js+tailwindcss
+该项目为 对next.js+tailwindcss 的学习
