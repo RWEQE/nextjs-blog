@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { GetServerSideProps } from 'next'
 // import type { NextPage } from 'next'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
@@ -50,17 +51,7 @@ const Home: React.FC<HomeProp> = ({ allPostsData }) => {
 
 export default Home;
 
-// export async function getStaticProps() {
-//   const allPostsData = getSortedPostsData()
-//   return {
-//     props: {
-//       allPostsData
-//     }
-//   }
-// }
-
-export async function getServerSideProps(context: any) {
-  console.log('context', context);
+export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const allPostsData = getSortedPostsData()
   return {
     props: {

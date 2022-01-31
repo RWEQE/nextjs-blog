@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { GetStaticProps, GetStaticPaths } from 'next'
 import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import dayjs from 'dayjs'
@@ -35,9 +36,8 @@ const Post: React.FC<PostProp> = ({ postData }) => {
 
 export default Post;
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds()
-  console.log('===============> paths', paths);
   return {
     paths,
     fallback: false,
@@ -45,7 +45,7 @@ export async function getStaticPaths() {
   // Return a list of possible value for id
 }
 
-export async function getStaticProps({ params }: { params: { id: string }}) {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const postData = await getPostData(params.id)
   return {
     props: {
