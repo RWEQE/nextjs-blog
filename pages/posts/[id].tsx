@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
@@ -6,15 +7,16 @@ import utilStyles from '../../styles/utils.module.css'
 
 interface PostDataProp {
   title: string;
-  id: strig;
+  id: string;
   date: string;
+  contentHtml: string;
 }
 
 interface PostProp {
   postData: PostDataProp;
 }
 
-const Post = ({ postData }): PostProp => {
+const Post: React.FC<PostProp> = ({ postData }) => {
   return (
     <Layout>
       <Head>
@@ -43,7 +45,7 @@ export async function getStaticPaths() {
   // Return a list of possible value for id
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: { id: string }}) {
   const postData = await getPostData(params.id)
   return {
     props: {

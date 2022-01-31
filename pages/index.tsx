@@ -1,11 +1,21 @@
-import type { NextPage } from 'next'
+import React, { ReactNode } from 'react'
+// import type { NextPage } from 'next'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import { getSortedPostsData } from '../lib/posts'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-const Home: NextPage = ({ allPostsData }) => {
+interface HomeProp {
+  children: ReactNode;
+  allPostsData: Array<{
+    title: string;
+    id: string;
+    date: string;
+  }>
+}
+
+const Home: React.FC<HomeProp> = ({ allPostsData }) => {
   return (
     <Layout home>
       <Head>
@@ -49,7 +59,7 @@ export default Home;
 //   }
 // }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   console.log('context', context);
   const allPostsData = getSortedPostsData()
   return {

@@ -1,11 +1,12 @@
+import React, { ReactNode } from 'react'
 import Head from 'next/head';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link'
 
 interface LayoutProp {
-  children: any;
-  home: boolean | undefined;
+  children: ReactNode;
+  home?: boolean;
 }
 
 const name = 'RWEQE'
