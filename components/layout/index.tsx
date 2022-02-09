@@ -1,7 +1,9 @@
 import React, { ReactNode } from 'react'
+import { Layout as AntdLayout } from 'antd';
+const { Header, Footer, Content } = AntdLayout;
 import Head from 'next/head';
 import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
+import utilStyles from '@/styles/utils.module.css';
 import Link from 'next/link'
 
 interface LayoutProp {
@@ -14,7 +16,10 @@ export const siteTitle = 'Next.js Sample Website'
 
 const Layout = ({ children, home }: LayoutProp) => {
   return (
-    <div className={styles.container}>
+    <AntdLayout className={styles.container}>
+      {
+        home && <div className={styles.blackgroundImage} />
+      }
       <Head>
         <link rel="icon" href='/favicon.ico' />
         <meta
@@ -30,7 +35,7 @@ const Layout = ({ children, home }: LayoutProp) => {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <Header className={styles.header}>
         {home ? (
           <>
             <img
@@ -58,16 +63,20 @@ const Layout = ({ children, home }: LayoutProp) => {
             </h2>
           </>
         )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
-    </div>
+      </Header>
+      <Content className={styles.content}>
+        {children}
+      </Content>
+      <Footer>
+        {!home && (
+          <div className={styles.backToHome}>
+            <Link href="/">
+              <a>← Back to home</a>
+            </Link>
+          </div>
+        )}
+      </Footer>
+    </AntdLayout>
   )
 }
 

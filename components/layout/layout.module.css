@@ -1,0 +1,41 @@
+.container {
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.blackgroundImage {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url('~@/public/images/blackground.jpg');
+  opacity: 0.7;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-size: 100%;
+  margin: -1rem;
+  z-index: -1;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerImage {
+  width: 6rem;
+  height: 6rem;
+}
+
+.headerHomeImage {
+  width: 8rem;
+  height: 8rem;
+}
+
+.content {
+  min-height: calc(100vh - 11rem - 102px);
+}
+
+.backToHome {
+  margin: 3rem 0 0;
+}

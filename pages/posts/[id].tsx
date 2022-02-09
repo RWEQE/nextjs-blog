@@ -1,10 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import Layout from '../../components/layout'
-import { getAllPostIds, getPostData } from '../../lib/posts'
+import Layout from '@/components/layout'
+import { getAllPostIds, getPostData } from '@/lib/posts'
 import dayjs from 'dayjs'
-import utilStyles from '../../styles/utils.module.css'
+import utilStyles from '@/styles/utils.module.css'
 
 interface PostDataProp {
   title: string;
